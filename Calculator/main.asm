@@ -27,7 +27,7 @@ includelib dwmapi.lib
    window_width dd 600
    window_height dd 800
 
-   x_test db 1
+   ENABLE_DARK_THEME db 1
 
    FontNameLabel db "Raleway",0
    FontNameButtons db "Arial",0
@@ -780,7 +780,7 @@ start:
             mov dword ptr [eax + MINMAXINFO.ptMinTrackSize.y], MIN_WINDOW_HEIGHT ; minimum height
             
         .ELSEIF uMsg==WM_SIZE
-            invoke DwmSetWindowAttribute, hWnd, 20, ADDR x_test, 8
+            invoke DwmSetWindowAttribute, hWnd, 20, ADDR ENABLE_DARK_THEME, 8
 
             .IF wParam != SIZE_MINIMIZED
                 ; Get the new size of the window
